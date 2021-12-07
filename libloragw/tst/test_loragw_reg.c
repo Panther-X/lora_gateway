@@ -55,6 +55,10 @@ int main()
     lgw_reg_w(LGW_IMPLICIT_PAYLOAD_LENGHT, test_value);
     lgw_reg_r(LGW_IMPLICIT_PAYLOAD_LENGHT, &read_value);
     printf("IMPLICIT_PAYLOAD_LENGHT = %d (should be %d)\n", read_value, test_value);
+    if (read_value != test_value) {
+	    printf("Test loragw_reg.c failed\n");
+	    return -1;
+    }
 
     /* 8b signed */
     /* NO SUCH REG AVAILABLE */
@@ -69,6 +73,10 @@ int main()
     lgw_reg_w(LGW_FRAME_SYNCH_PEAK2_POS, test_value);
     lgw_reg_r(LGW_FRAME_SYNCH_PEAK2_POS, &read_value);
     printf("FRAME_SYNCH_PEAK2_POS = %d (should be %d)\n", read_value, test_value);
+    if (read_value != test_value) {
+	    printf("Test loragw_reg.c failed\n");
+	    return -1;
+    }
 
     /* less than 8b, with offset, signed */
     /* NO SUCH REG AVAILABLE */
@@ -83,6 +91,10 @@ int main()
     lgw_reg_w(LGW_PREAMBLE_SYMB1_NB, test_value);
     lgw_reg_r(LGW_PREAMBLE_SYMB1_NB, &read_value);
     printf("PREAMBLE_SYMB1_NB = %d (should be %d)\n", read_value, test_value);
+    if (read_value != test_value) {
+	    printf("Test loragw_reg.c failed\n");
+	    return -1;
+    }
 
     /* 16b signed */
     /* NO SUCH REG AVAILABLE */
@@ -97,12 +109,20 @@ int main()
     lgw_reg_w(LGW_ADJUST_MODEM_START_OFFSET_SF12_RDX4, test_value);
     lgw_reg_r(LGW_ADJUST_MODEM_START_OFFSET_SF12_RDX4, &read_value);
     printf("ADJUST_MODEM_START_OFFSET_SF12_RDX4 = %d (should be %d)\n", read_value, test_value);
+    if (read_value != test_value) {
+	    printf("Test loragw_reg.c failed\n");
+	    return -1;
+    }
 
     /* between 8b and 16b, signed */
     test_value = -1947; /* 11000 01100101b */
     lgw_reg_w(LGW_IF_FREQ_1, test_value);
     lgw_reg_r(LGW_IF_FREQ_1, &read_value);
     printf("IF_FREQ_1 = %d (should be %d)\n", read_value, test_value);
+    if (read_value != test_value) {
+	    printf("Test loragw_reg.c failed\n");
+	    return -1;
+    }
 
     /* --- BURST WRITE AND READ TEST --- */
 
